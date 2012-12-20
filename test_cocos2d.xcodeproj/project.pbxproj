@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0981BF168350E600E85FAA /* MyBoxWorld.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC0981BE168350E600E85FAA /* MyBoxWorld.mm */; };
+		AC0981C216836BF300E85FAA /* Ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC0981C116836BF300E85FAA /* Ball.jpg */; };
 		AC10490A1681123A00CE4FE2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1049091681123A00CE4FE2 /* QuartzCore.framework */; };
 		AC10490C1681123A00CE4FE2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC10490B1681123A00CE4FE2 /* OpenGLES.framework */; };
 		AC10490E1681123A00CE4FE2 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC10490D1681123A00CE4FE2 /* OpenAL.framework */; };
@@ -181,9 +183,17 @@
 		AC104B311681123F00CE4FE2 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC104B301681123F00CE4FE2 /* GLES-Render.mm */; };
 		AC104B341681123F00CE4FE2 /* PhysicsSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC104B331681123F00CE4FE2 /* PhysicsSprite.mm */; };
 		AC104B361681123F00CE4FE2 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = AC104B351681123F00CE4FE2 /* blocks.png */; };
+		AC104B3E168112B200CE4FE2 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = AC104B3D168112B200CE4FE2 /* Player.m */; };
+		AC104B411681139C00CE4FE2 /* BasicSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = AC104B401681139C00CE4FE2 /* BasicSprite.m */; };
+		AC104B441681190A00CE4FE2 /* player.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC104B421681190A00CE4FE2 /* player.plist */; };
+		AC104B451681190A00CE4FE2 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = AC104B431681190A00CE4FE2 /* player.png */; };
+		AC104B4A1681203C00CE4FE2 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AC104B491681203C00CE4FE2 /* GameScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC0981BD168350E600E85FAA /* MyBoxWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBoxWorld.h; sourceTree = "<group>"; };
+		AC0981BE168350E600E85FAA /* MyBoxWorld.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyBoxWorld.mm; sourceTree = "<group>"; };
+		AC0981C116836BF300E85FAA /* Ball.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ball.jpg; sourceTree = "<group>"; };
 		AC1049051681123A00CE4FE2 /* test_cocos2d.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test_cocos2d.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1049091681123A00CE4FE2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AC10490B1681123A00CE4FE2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -545,6 +555,14 @@
 		AC104B321681123F00CE4FE2 /* PhysicsSprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicsSprite.h; sourceTree = "<group>"; };
 		AC104B331681123F00CE4FE2 /* PhysicsSprite.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsSprite.mm; sourceTree = "<group>"; };
 		AC104B351681123F00CE4FE2 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
+		AC104B3C168112B200CE4FE2 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		AC104B3D168112B200CE4FE2 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		AC104B3F1681139C00CE4FE2 /* BasicSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicSprite.h; sourceTree = "<group>"; };
+		AC104B401681139C00CE4FE2 /* BasicSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicSprite.m; sourceTree = "<group>"; };
+		AC104B421681190A00CE4FE2 /* player.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = player.plist; sourceTree = "<group>"; };
+		AC104B431681190A00CE4FE2 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
+		AC104B481681203C00CE4FE2 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		AC104B491681203C00CE4FE2 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,6 +621,7 @@
 		AC10491B1681123A00CE4FE2 /* test_cocos2d */ = {
 			isa = PBXGroup;
 			children = (
+				AC104B471681200500CE4FE2 /* own */,
 				AC104B261681123F00CE4FE2 /* AppDelegate.h */,
 				AC104B271681123F00CE4FE2 /* AppDelegate.mm */,
 				AC104B291681123F00CE4FE2 /* HelloWorldLayer.h */,
@@ -623,6 +642,8 @@
 		AC10491C1681123A00CE4FE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AC0981C116836BF300E85FAA /* Ball.jpg */,
+				AC104B461681191700CE4FE2 /* own resources */,
 				AC10491D1681123A00CE4FE2 /* Default.png */,
 				AC10491F1681123A00CE4FE2 /* Default-Landscape~ipad.png */,
 				AC1049211681123A00CE4FE2 /* fps_images.png */,
@@ -1142,6 +1163,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AC104B461681191700CE4FE2 /* own resources */ = {
+			isa = PBXGroup;
+			children = (
+				AC104B421681190A00CE4FE2 /* player.plist */,
+				AC104B431681190A00CE4FE2 /* player.png */,
+			);
+			name = "own resources";
+			sourceTree = "<group>";
+		};
+		AC104B471681200500CE4FE2 /* own */ = {
+			isa = PBXGroup;
+			children = (
+				AC104B3C168112B200CE4FE2 /* Player.h */,
+				AC104B3D168112B200CE4FE2 /* Player.m */,
+				AC104B3F1681139C00CE4FE2 /* BasicSprite.h */,
+				AC104B401681139C00CE4FE2 /* BasicSprite.m */,
+				AC104B481681203C00CE4FE2 /* GameScene.h */,
+				AC104B491681203C00CE4FE2 /* GameScene.m */,
+				AC0981BD168350E600E85FAA /* MyBoxWorld.h */,
+				AC0981BE168350E600E85FAA /* MyBoxWorld.mm */,
+			);
+			name = own;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1206,6 +1251,9 @@
 				AC1049351681123A00CE4FE2 /* iTunesArtwork in Resources */,
 				AC104A731681123D00CE4FE2 /* ChangeLog in Resources */,
 				AC104B361681123F00CE4FE2 /* blocks.png in Resources */,
+				AC104B441681190A00CE4FE2 /* player.plist in Resources */,
+				AC104B451681190A00CE4FE2 /* player.png in Resources */,
+				AC0981C216836BF300E85FAA /* Ball.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1367,6 +1415,10 @@
 				AC104B2E1681123F00CE4FE2 /* IntroLayer.mm in Sources */,
 				AC104B311681123F00CE4FE2 /* GLES-Render.mm in Sources */,
 				AC104B341681123F00CE4FE2 /* PhysicsSprite.mm in Sources */,
+				AC104B3E168112B200CE4FE2 /* Player.m in Sources */,
+				AC104B411681139C00CE4FE2 /* BasicSprite.m in Sources */,
+				AC104B4A1681203C00CE4FE2 /* GameScene.m in Sources */,
+				AC0981BF168350E600E85FAA /* MyBoxWorld.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1472,6 +1524,7 @@
 				AC104B3B1681123F00CE4FE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
