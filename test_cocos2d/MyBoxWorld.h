@@ -14,12 +14,22 @@
 typedef enum
 {
     BALL,
+    PADDLE
 }SPRITE;
 
 
 @interface MyBoxWorld : CCLayer {
     
     b2World *_world;
+    
+    b2Body *_groundBody;
+    b2Body *_paddleBody;
+    b2MouseJoint *_mouseJoint;
+    
+    b2Fixture *_paddleFixture;
+    
+    CGPoint _beginPoint;
+    BOOL _isPaddleAction;
     
 }
 

@@ -188,6 +188,7 @@
 		AC104B441681190A00CE4FE2 /* player.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC104B421681190A00CE4FE2 /* player.plist */; };
 		AC104B451681190A00CE4FE2 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = AC104B431681190A00CE4FE2 /* player.png */; };
 		AC104B4A1681203C00CE4FE2 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AC104B491681203C00CE4FE2 /* GameScene.m */; };
+		AC77B281168495A700C49AAF /* Paddle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC77B280168495A700C49AAF /* Paddle.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -563,6 +564,7 @@
 		AC104B431681190A00CE4FE2 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 		AC104B481681203C00CE4FE2 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		AC104B491681203C00CE4FE2 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		AC77B280168495A700C49AAF /* Paddle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Paddle.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -642,6 +644,7 @@
 		AC10491C1681123A00CE4FE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AC77B280168495A700C49AAF /* Paddle.jpg */,
 				AC0981C116836BF300E85FAA /* Ball.jpg */,
 				AC104B461681191700CE4FE2 /* own resources */,
 				AC10491D1681123A00CE4FE2 /* Default.png */,
@@ -1254,6 +1257,7 @@
 				AC104B441681190A00CE4FE2 /* player.plist in Resources */,
 				AC104B451681190A00CE4FE2 /* player.png in Resources */,
 				AC0981C216836BF300E85FAA /* Ball.jpg in Resources */,
+				AC77B281168495A700C49AAF /* Paddle.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
