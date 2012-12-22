@@ -25,6 +25,7 @@
     CGSize winSize = [CCDirector sharedDirector].winSize;
     b2Vec2 gravity = b2Vec2(0.0f,-2.0f);
     _world = new b2World(gravity);
+    _world->SetAllowSleeping(true);
     
     //create edges around the entire screen
     b2BodyDef groundBodyDef;
@@ -41,6 +42,74 @@
     _groundBody->CreateFixture(&boxShapeDef);
     groundEdge.Set(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO,0));
     _groundBody->CreateFixture(&boxShapeDef);
+    
+    CCSprite *backGround = [CCSprite spriteWithFile:@"back1.png"];
+    backGround.position = ccp(50, 50);
+    [self addChild:backGround];
+    
+   
+  
+
+    
+    
+    
+    
+    
+    b2BodyDef bodyDef;
+    bodyDef.position.Set(50/PTM_RATIO,50/PTM_RATIO);
+    bodyDef.userData = backGround;
+    
+    b2PolygonShape boxDef;
+    //row 1, col 1
+    int num1 = 6;
+    b2Vec2 verts1[] = {
+        b2Vec2(-6.5f / PTM_RATIO, -17.3f / PTM_RATIO),
+        b2Vec2(-2.3f / PTM_RATIO, -10.0f / PTM_RATIO),
+        b2Vec2(-3.0f / PTM_RATIO, 2.4f / PTM_RATIO),
+        b2Vec2(-17.6f / PTM_RATIO, 13.3f / PTM_RATIO),
+        b2Vec2(-41.5f / PTM_RATIO, 15.5f / PTM_RATIO),
+        b2Vec2(-48.5f / PTM_RATIO, 8.2f / PTM_RATIO)    };
+
+    boxDef.Set(verts1, num1);
+    
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &boxDef;
+    fixtureDef.density = 0.0f;
+    fixtureDef.friction = 0.0f;
+    fixtureDef.restitution = 1.0f;
+    
+    b2Body *body = _world->CreateBody(&bodyDef);
+    body->CreateFixture(&fixtureDef);
+    
+    
+    
+    
+    int num2 = 3;
+    b2Vec2 verts2[] = {
+        b2Vec2(-48.7f / PTM_RATIO, -48.2f / PTM_RATIO),
+        b2Vec2(48.3f / PTM_RATIO, -48.9f / PTM_RATIO),
+        b2Vec2(-48.1f / PTM_RATIO, 8.0f / PTM_RATIO)
+    };
+    
+    boxDef.Set(verts2, num2);
+    body->CreateFixture(&fixtureDef);
+    
+    int num3 = 4;
+    b2Vec2 verts3[] = {
+        b2Vec2(34.1f / PTM_RATIO, -39.9f / PTM_RATIO),
+        b2Vec2(34.8f / PTM_RATIO, -30.3f / PTM_RATIO),
+        b2Vec2(24.6f / PTM_RATIO, -22.3f / PTM_RATIO),
+        b2Vec2(4.0f / PTM_RATIO, -22.6f / PTM_RATIO)
+    };
+    boxDef.Set(verts3, num3);
+    body->CreateFixture(&fixtureDef);
+    
+    
+    
+    
+    
+    
+    
 }
 
 - (void)tick:(ccTime)dt
@@ -130,6 +199,45 @@
     
 }
 
+
+- (void)addALine
+{
+    
+    b2Vec2 verts[] = {
+        b2Vec2(41.8f / PTM_RATIO, 67.6f / PTM_RATIO),
+        b2Vec2(73.9f / PTM_RATIO, 77.3f / PTM_RATIO),
+        b2Vec2(86.7f / PTM_RATIO, 64.6f / PTM_RATIO),
+        b2Vec2(97.4f / PTM_RATIO, 56.6f / PTM_RATIO),
+        b2Vec2(111.1f / PTM_RATIO, 58.2f / PTM_RATIO),
+        b2Vec2(124.8f / PTM_RATIO, 62.3f / PTM_RATIO),
+        b2Vec2(147.2f / PTM_RATIO, 65.3f / PTM_RATIO),
+        b2Vec2(158.5f / PTM_RATIO, 59.9f / PTM_RATIO),
+        b2Vec2(158.5f / PTM_RATIO, 49.2f / PTM_RATIO),
+        b2Vec2(163.2f / PTM_RATIO, 40.5f / PTM_RATIO),
+        b2Vec2(182.0f / PTM_RATIO, 37.5f / PTM_RATIO),
+        b2Vec2(197.3f / PTM_RATIO, 39.2f / PTM_RATIO),
+        b2Vec2(209.1f / PTM_RATIO, 46.2f / PTM_RATIO),
+        b2Vec2(217.1f / PTM_RATIO, 57.9f / PTM_RATIO),
+        b2Vec2(224.7f / PTM_RATIO, 64.6f / PTM_RATIO)
+    };
+
+    
+    b2ChainShape chain;
+    chain.CreateChain(verts, 15);
+    b2FixtureDef lineDef;
+    lineDef.shape = &chain;
+    
+    b2BodyDef bodyDef;
+    bodyDef.position.Set(100/PTM_RATIO,100/PTM_RATIO);
+    b2Body *body = _world->CreateBody(&bodyDef);
+    
+    body->CreateFixture(&lineDef);
+    
+    
+    
+    
+}
+
 - (id)init
 {
     self = [super init];
@@ -138,6 +246,8 @@
         [self initWorld];
         [self addABall];
         [self addPaddle];
+        [self addALine];
+        
         
         
         self.isTouchEnabled = YES;

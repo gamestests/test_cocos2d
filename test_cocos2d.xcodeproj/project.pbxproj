@@ -189,6 +189,8 @@
 		AC104B451681190A00CE4FE2 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = AC104B431681190A00CE4FE2 /* player.png */; };
 		AC104B4A1681203C00CE4FE2 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AC104B491681203C00CE4FE2 /* GameScene.m */; };
 		AC77B281168495A700C49AAF /* Paddle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC77B280168495A700C49AAF /* Paddle.jpg */; };
+		ACA9FC621685999D00B6A6C8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = ACA9FC611685999D00B6A6C8 /* background.png */; };
+		ACA9FC641685999D00B6A6C8 /* back1.png in Resources */ = {isa = PBXBuildFile; fileRef = ACA9FC631685999D00B6A6C8 /* back1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -565,6 +567,8 @@
 		AC104B481681203C00CE4FE2 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		AC104B491681203C00CE4FE2 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		AC77B280168495A700C49AAF /* Paddle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Paddle.jpg; sourceTree = "<group>"; };
+		ACA9FC611685999D00B6A6C8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		ACA9FC631685999D00B6A6C8 /* back1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -644,6 +648,7 @@
 		AC10491C1681123A00CE4FE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ACA9FC611685999D00B6A6C8 /* background.png */,
 				AC77B280168495A700C49AAF /* Paddle.jpg */,
 				AC0981C116836BF300E85FAA /* Ball.jpg */,
 				AC104B461681191700CE4FE2 /* own resources */,
@@ -1178,6 +1183,7 @@
 		AC104B471681200500CE4FE2 /* own */ = {
 			isa = PBXGroup;
 			children = (
+				ACA9FC631685999D00B6A6C8 /* back1.png */,
 				AC104B3C168112B200CE4FE2 /* Player.h */,
 				AC104B3D168112B200CE4FE2 /* Player.m */,
 				AC104B3F1681139C00CE4FE2 /* BasicSprite.h */,
@@ -1258,6 +1264,8 @@
 				AC104B451681190A00CE4FE2 /* player.png in Resources */,
 				AC0981C216836BF300E85FAA /* Ball.jpg in Resources */,
 				AC77B281168495A700C49AAF /* Paddle.jpg in Resources */,
+				ACA9FC621685999D00B6A6C8 /* background.png in Resources */,
+				ACA9FC641685999D00B6A6C8 /* back1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
