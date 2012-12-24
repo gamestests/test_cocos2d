@@ -13,6 +13,7 @@
 
 #import "GameScene.h"
 #import "MyBoxWorld.h"
+#import "GameSceneBox2D.h"
 
 #pragma mark - IntroLayer
 
@@ -62,6 +63,6 @@
 
 -(void) makeTransition:(ccTime)dt
 {
-	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MyBoxWorld scene] withColor:ccWHITE]];
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GameSceneBox2D scene] withColor:ccWHITE]];
 }
 @end

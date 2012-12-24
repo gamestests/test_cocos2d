@@ -8,7 +8,7 @@
 
 #import "MyBoxWorld.h"
 
-#define PTM_RATIO 32
+#import "GTBox2D.h"
 
 @implementation MyBoxWorld
 
@@ -23,14 +23,16 @@
 - (void)initWorld
 {
     CGSize winSize = [CCDirector sharedDirector].winSize;
-    b2Vec2 gravity = b2Vec2(0.0f,-2.0f);
-    _world = new b2World(gravity);
-    _world->SetAllowSleeping(true);
+//    b2Vec2 gravity = b2Vec2(0.0f,-2.0f);
+//    _world = new b2World(gravity);
+//    _world->SetAllowSleeping(true);
+    
+    b2World *world = [GTBox2D sharedGTBox2D].world;
     
     //create edges around the entire screen
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0, 0);
-    _groundBody = _world->CreateBody(&groundBodyDef);
+    _groundBody = world->CreateBody(&groundBodyDef);
     b2EdgeShape groundEdge;
     b2FixtureDef boxShapeDef;
     boxShapeDef.shape = &groundEdge;
@@ -78,7 +80,7 @@
     fixtureDef.friction = 0.0f;
     fixtureDef.restitution = 1.0f;
     
-    b2Body *body = _world->CreateBody(&bodyDef);
+    b2Body *body = world->CreateBody(&bodyDef);
     body->CreateFixture(&fixtureDef);
     
     
@@ -114,8 +116,9 @@
 
 - (void)tick:(ccTime)dt
 {
-    _world->Step(dt, 10, 10);
-    for(b2Body *b = _world->GetBodyList();b;b=b->GetNext())
+    b2World *world = [GTBox2D sharedGTBox2D].world;
+    world->Step(dt, 10, 10);
+    for(b2Body *b = world->GetBodyList();b;b=b->GetNext())
     {
         if(b->GetUserData()!=NULL)
         {
@@ -145,7 +148,8 @@
 
 - (void)addABall
 {
-    CCSprite *ball = [CCSprite spriteWithFile:@"Ball.jpg"];
+    b2World *world = [GTBox2D sharedGTBox2D].world;
+    CCSprite *ball = [CCSprite spriteWithFile:@"Ball.png"];
     ball.position = ccp(200, 200);
     [self addChild:ball z:1 tag:BALL];
     
@@ -153,7 +157,7 @@
     ballBodyDef.type = b2_dynamicBody;
     ballBodyDef.position.Set(200/PTM_RATIO,200/PTM_RATIO);
     ballBodyDef.userData = ball;
-    b2Body *body = _world->CreateBody(&ballBodyDef);
+    b2Body *body = world->CreateBody(&ballBodyDef);
     
     b2CircleShape circle;
     circle.m_radius = 26.0/PTM_RATIO;
@@ -170,6 +174,7 @@
 
 - (void)addPaddle
 {
+    b2World *world = [GTBox2D sharedGTBox2D].world;
     CCSprite *paddle = [CCSprite spriteWithFile:@"Paddle.jpg"];
     paddle.position = ccp(200, paddle.contentSize.height/2);
     [self addChild:paddle z:1 tag:PADDLE];
@@ -178,7 +183,7 @@
     paddleBodyDef.type = b2_dynamicBody;
     paddleBodyDef.position.Set(200/PTM_RATIO, paddle.contentSize.height/2/PTM_RATIO);
     paddleBodyDef.userData = paddle;
-    _paddleBody = _world->CreateBody(&paddleBodyDef);
+    _paddleBody = world->CreateBody(&paddleBodyDef);
     
     b2PolygonShape polygon;
     polygon.SetAsBox(paddle.contentSize.width/2/PTM_RATIO, paddle.contentSize.height/2/PTM_RATIO);
@@ -194,7 +199,7 @@
     b2Vec2 worldAxis(1.0f,0.0f);
     jointDef.collideConnected = true;
     jointDef.Initialize(_paddleBody, _groundBody, _paddleBody->GetWorldCenter(), worldAxis);
-    _world->CreateJoint(&jointDef);
+    world->CreateJoint(&jointDef);
     
     
 }
@@ -202,52 +207,61 @@
 
 - (void)addALine
 {
+    b2World *world = [GTBox2D sharedGTBox2D].world;
+
+//    b2Vec2 verts[480];
+//    int length = 480>[_linePoint count]?[_linePoint count]:480;
+//    
+//    verts[0] = b2Vec2(_beginPoint.x/PTM_RATIO,_beginPoint.y/PTM_RATIO);
     
-    b2Vec2 verts[] = {
-        b2Vec2(41.8f / PTM_RATIO, 67.6f / PTM_RATIO),
-        b2Vec2(73.9f / PTM_RATIO, 77.3f / PTM_RATIO),
-        b2Vec2(86.7f / PTM_RATIO, 64.6f / PTM_RATIO),
-        b2Vec2(97.4f / PTM_RATIO, 56.6f / PTM_RATIO),
-        b2Vec2(111.1f / PTM_RATIO, 58.2f / PTM_RATIO),
-        b2Vec2(124.8f / PTM_RATIO, 62.3f / PTM_RATIO),
-        b2Vec2(147.2f / PTM_RATIO, 65.3f / PTM_RATIO),
-        b2Vec2(158.5f / PTM_RATIO, 59.9f / PTM_RATIO),
-        b2Vec2(158.5f / PTM_RATIO, 49.2f / PTM_RATIO),
-        b2Vec2(163.2f / PTM_RATIO, 40.5f / PTM_RATIO),
-        b2Vec2(182.0f / PTM_RATIO, 37.5f / PTM_RATIO),
-        b2Vec2(197.3f / PTM_RATIO, 39.2f / PTM_RATIO),
-        b2Vec2(209.1f / PTM_RATIO, 46.2f / PTM_RATIO),
-        b2Vec2(217.1f / PTM_RATIO, 57.9f / PTM_RATIO),
-        b2Vec2(224.7f / PTM_RATIO, 64.6f / PTM_RATIO)
-    };
+//        NSArray *line = [_lines lastObject];
+    
+        b2Vec2 verts2[2];
+        verts2[0] = b2Vec2(_beginPoint.x/PTM_RATIO,_beginPoint.y/PTM_RATIO);
+        verts2[1] = b2Vec2(_movePoint.x/PTM_RATIO,_movePoint.y/PTM_RATIO);
+        _beginPoint = _movePoint;
+    
+    
+//        b2Vec2 verts[480];
+//        int length = 480>[line count]?[line count]:480;
+//        
+//        verts[0] = b2Vec2(_beginPoint.x/PTM_RATIO,_beginPoint.y/PTM_RATIO);
+//        
+//        for(int i = 0;i<length;i++)
+//        {
+//            NSValue *val = [line objectAtIndex:i];
+//            CGPoint point = [val CGPointValue];
+//            verts[i] = b2Vec2(point.x/PTM_RATIO,point.y/PTM_RATIO);
+//        }
+    
+        b2ChainShape chain;
+        chain.CreateChain(verts2, 2);
+        b2FixtureDef lineDef;
+        lineDef.shape = &chain;
+        
+        b2BodyDef bodyDef;
+        bodyDef.position.Set(0,0);
+        b2Body *body = world->CreateBody(&bodyDef);
+        
+        body->CreateFixture(&lineDef);
+    
+//    verts[0] = verts[1];
 
     
-    b2ChainShape chain;
-    chain.CreateChain(verts, 15);
-    b2FixtureDef lineDef;
-    lineDef.shape = &chain;
-    
-    b2BodyDef bodyDef;
-    bodyDef.position.Set(100/PTM_RATIO,100/PTM_RATIO);
-    b2Body *body = _world->CreateBody(&bodyDef);
-    
-    body->CreateFixture(&lineDef);
-    
-    
-    
-    
+    NSLog(@"%s",__FUNCTION__);
 }
 
 - (id)init
 {
     self = [super init];
     if (self) {
+//        _linePoint = [[NSMutableArray alloc] init];
+        _lines = [[NSMutableArray alloc] init];
         
         [self initWorld];
         [self addABall];
         [self addPaddle];
-        [self addALine];
-        
+//        [self addALine];
         
         
         self.isTouchEnabled = YES;
@@ -258,12 +272,19 @@
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    b2World *world = [GTBox2D sharedGTBox2D].world;
+//    [_linePoint removeAllObjects];
+    _linePoint = [[NSMutableArray alloc] init];
+    
     if(_mouseJoint)
-    _world->DestroyJoint(_mouseJoint);
+    world->DestroyJoint(_mouseJoint);
     _mouseJoint = NULL;
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:touch.view];
     point = [[CCDirector sharedDirector] convertToGL:point];
+    [_linePoint addObject:[NSValue valueWithCGPoint:point]];
+    _beginPoint = point;
+//    _movePoint = point;
     b2Vec2 locationInWorld = b2Vec2(point.x/PTM_RATIO,point.y/PTM_RATIO);
     if(_paddleFixture->TestPoint(locationInWorld))
     {
@@ -274,29 +295,84 @@
         md.collideConnected = true;
         md.maxForce = 1000.f * _paddleBody->GetMass();
         
-        _mouseJoint = (b2MouseJoint*)_world->CreateJoint(&md);
+        _mouseJoint = (b2MouseJoint*)world->CreateJoint(&md);
         _paddleBody->SetAwake(true);
-        
-        
     }
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if(!_mouseJoint)
-        return;
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:touch.view];
     point = [[CCDirector sharedDirector] convertToGL:point];
+    _movePoint = point;
+    
+    NSValue *val = [NSValue valueWithCGPoint:point];
+    [_linePoint addObject:val];
+    
+    [self addALine];
+    
+    if(!_mouseJoint)
+        return;
     b2Vec2 locationInWorld = b2Vec2(point.x/PTM_RATIO,point.y/PTM_RATIO);
     _mouseJoint->SetTarget(locationInWorld);
+}
 
-   
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if(_linePoint)
+    {
+        [_lines addObject:_linePoint];
+        [_linePoint release];
+        _linePoint = nil;
+    }
+    
+//    [self addALine];
+}
+
+- (void)ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if(_linePoint)
+    {
+        [_lines addObject:_linePoint];
+        [_linePoint release];
+        _linePoint = nil;
+    }
+//    [self addALine];
+}
+
+- (void)draw
+{
+    glLineWidth(5.0f);
+    _movePoint = _beginPoint;
+    for(NSArray *line in _lines)
+    {
+        _movePoint = [[line objectAtIndex:0] CGPointValue];
+        for(NSValue *val in line)
+        {
+            CGPoint point = [val CGPointValue];
+            ccDrawLine(_movePoint, point);
+            _movePoint = point;
+        }
+    }
+    _movePoint = _beginPoint;
+    for(NSValue *val in _linePoint)
+    {
+        CGPoint point = [val CGPointValue];
+        ccDrawLine(_movePoint, point);
+        _movePoint = point;
+    }
     
 }
 
-
-
-
+- (void)dealloc
+{
+    [_lines removeAllObjects];
+    [_lines release];
+    _lines = nil;
+    
+    [super dealloc];
+    
+}
 
 @end

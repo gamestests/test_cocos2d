@@ -188,6 +188,12 @@
 		AC104B441681190A00CE4FE2 /* player.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC104B421681190A00CE4FE2 /* player.plist */; };
 		AC104B451681190A00CE4FE2 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = AC104B431681190A00CE4FE2 /* player.png */; };
 		AC104B4A1681203C00CE4FE2 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AC104B491681203C00CE4FE2 /* GameScene.m */; };
+		AC4F96E8168803DC000AA326 /* Ball.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4F96E7168803DC000AA326 /* Ball.png */; };
+		AC4F96F11688097B000AA326 /* GTBox2D.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC4F96F01688097B000AA326 /* GTBox2D.mm */; };
+		AC4F96FC168817DE000AA326 /* Box2DBasicSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC4F96FB168817DE000AA326 /* Box2DBasicSprite.mm */; };
+		AC4F96FF168819D1000AA326 /* Hero.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC4F96FE168819D1000AA326 /* Hero.mm */; };
+		AC4F970116881A11000AA326 /* maoball.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4F970016881A11000AA326 /* maoball.png */; };
+		AC4F970416881AB7000AA326 /* GameSceneBox2D.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC4F970316881AB6000AA326 /* GameSceneBox2D.mm */; };
 		AC77B281168495A700C49AAF /* Paddle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC77B280168495A700C49AAF /* Paddle.jpg */; };
 		ACA9FC621685999D00B6A6C8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = ACA9FC611685999D00B6A6C8 /* background.png */; };
 		ACA9FC641685999D00B6A6C8 /* back1.png in Resources */ = {isa = PBXBuildFile; fileRef = ACA9FC631685999D00B6A6C8 /* back1.png */; };
@@ -566,6 +572,17 @@
 		AC104B431681190A00CE4FE2 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 		AC104B481681203C00CE4FE2 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		AC104B491681203C00CE4FE2 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		AC4F96E7168803DC000AA326 /* Ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ball.png; sourceTree = "<group>"; };
+		AC4F96EF1688097B000AA326 /* GTBox2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTBox2D.h; sourceTree = "<group>"; };
+		AC4F96F01688097B000AA326 /* GTBox2D.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GTBox2D.mm; sourceTree = "<group>"; };
+		AC4F96F616880D1C000AA326 /* ContentSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentSupport.h; sourceTree = "<group>"; };
+		AC4F96FA168817DE000AA326 /* Box2DBasicSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2DBasicSprite.h; sourceTree = "<group>"; };
+		AC4F96FB168817DE000AA326 /* Box2DBasicSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Box2DBasicSprite.mm; sourceTree = "<group>"; };
+		AC4F96FD168819D0000AA326 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
+		AC4F96FE168819D1000AA326 /* Hero.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Hero.mm; sourceTree = "<group>"; };
+		AC4F970016881A11000AA326 /* maoball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maoball.png; sourceTree = "<group>"; };
+		AC4F970216881AB6000AA326 /* GameSceneBox2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneBox2D.h; sourceTree = "<group>"; };
+		AC4F970316881AB6000AA326 /* GameSceneBox2D.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameSceneBox2D.mm; sourceTree = "<group>"; };
 		AC77B280168495A700C49AAF /* Paddle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Paddle.jpg; sourceTree = "<group>"; };
 		ACA9FC611685999D00B6A6C8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		ACA9FC631685999D00B6A6C8 /* back1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back1.png; sourceTree = "<group>"; };
@@ -627,6 +644,7 @@
 		AC10491B1681123A00CE4FE2 /* test_cocos2d */ = {
 			isa = PBXGroup;
 			children = (
+				AC4F96EE16880929000AA326 /* Box2D */,
 				AC104B471681200500CE4FE2 /* own */,
 				AC104B261681123F00CE4FE2 /* AppDelegate.h */,
 				AC104B271681123F00CE4FE2 /* AppDelegate.mm */,
@@ -648,6 +666,7 @@
 		AC10491C1681123A00CE4FE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AC4F96E7168803DC000AA326 /* Ball.png */,
 				ACA9FC611685999D00B6A6C8 /* background.png */,
 				AC77B280168495A700C49AAF /* Paddle.jpg */,
 				AC0981C116836BF300E85FAA /* Ball.jpg */,
@@ -1196,6 +1215,23 @@
 			name = own;
 			sourceTree = "<group>";
 		};
+		AC4F96EE16880929000AA326 /* Box2D */ = {
+			isa = PBXGroup;
+			children = (
+				AC4F970016881A11000AA326 /* maoball.png */,
+				AC4F96EF1688097B000AA326 /* GTBox2D.h */,
+				AC4F96F01688097B000AA326 /* GTBox2D.mm */,
+				AC4F96F616880D1C000AA326 /* ContentSupport.h */,
+				AC4F96FA168817DE000AA326 /* Box2DBasicSprite.h */,
+				AC4F96FB168817DE000AA326 /* Box2DBasicSprite.mm */,
+				AC4F96FD168819D0000AA326 /* Hero.h */,
+				AC4F96FE168819D1000AA326 /* Hero.mm */,
+				AC4F970216881AB6000AA326 /* GameSceneBox2D.h */,
+				AC4F970316881AB6000AA326 /* GameSceneBox2D.mm */,
+			);
+			name = Box2D;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1266,6 +1302,8 @@
 				AC77B281168495A700C49AAF /* Paddle.jpg in Resources */,
 				ACA9FC621685999D00B6A6C8 /* background.png in Resources */,
 				ACA9FC641685999D00B6A6C8 /* back1.png in Resources */,
+				AC4F96E8168803DC000AA326 /* Ball.png in Resources */,
+				AC4F970116881A11000AA326 /* maoball.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1431,6 +1469,10 @@
 				AC104B411681139C00CE4FE2 /* BasicSprite.m in Sources */,
 				AC104B4A1681203C00CE4FE2 /* GameScene.m in Sources */,
 				AC0981BF168350E600E85FAA /* MyBoxWorld.mm in Sources */,
+				AC4F96F11688097B000AA326 /* GTBox2D.mm in Sources */,
+				AC4F96FC168817DE000AA326 /* Box2DBasicSprite.mm in Sources */,
+				AC4F96FF168819D1000AA326 /* Hero.mm in Sources */,
+				AC4F970416881AB7000AA326 /* GameSceneBox2D.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -470,7 +470,7 @@ inline const b2Transform& b2Body::GetTransform() const
 	return m_xf;
 }
 
-inline const b2Vec2& b2Body::GetPosition() const
+inline  const b2Vec2& b2Body::GetPosition() const
 {
 	return m_xf.p;
 }

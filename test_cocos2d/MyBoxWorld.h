@@ -19,17 +19,24 @@ typedef enum
 
 
 @interface MyBoxWorld : CCLayer {
-    
-    b2World *_world;
-    
+//    
+//    b2World *_world;
+//    
+    b2EdgeShape _groundEdge;
     b2Body *_groundBody;
     b2Body *_paddleBody;
     b2MouseJoint *_mouseJoint;
     
     b2Fixture *_paddleFixture;
     
+    b2Fixture *_lineFixture;
+    
     CGPoint _beginPoint;
+    CGPoint _movePoint;
     BOOL _isPaddleAction;
+    
+    NSMutableArray *_linePoint;
+    NSMutableArray *_lines;
     
 }
 
