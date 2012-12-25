@@ -27,10 +27,85 @@
     self = [super init];
     if (self) {
         
+        b2World *world = [GTBox2D sharedGTBox2D].world;
+        
         Hero *hero = [[Hero alloc] initWithPosition:ccp(300, 300)];
         [self addChild:hero.sprite z:0 tag:HERO];
         
+        Hero *hero1 = [[Hero alloc] initWithPosition:ccp(280, 280)];
+        hero1.body->SetType(b2_staticBody);
+        [self addChild:hero1.sprite z:0 tag:10];
+        
+        b2RopeJointDef jd;
+        jd.bodyA = hero.body;
+        jd.bodyB = hero1.body;
+        
+        jd.localAnchorA = b2Vec2(0,0);
+        jd.localAnchorB = b2Vec2(0,0);
+        
+        jd.maxLength = 100/PTM_RATIO;
+        world->CreateJoint(&jd);
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         [self schedule:@selector(tick:)];
+        
+        
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
         
     }

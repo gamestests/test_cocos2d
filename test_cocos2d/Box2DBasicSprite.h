@@ -18,6 +18,10 @@
     b2Fixture *_bodyFixture;
 }
 
+@property (readonly, nonatomic) b2Body *body;
+
+
+
 //- (void)initWithPosition:(b2Vec2)vec World:(b2World*)world;
 - (id)initWithPosition:(CGPoint)position;
 

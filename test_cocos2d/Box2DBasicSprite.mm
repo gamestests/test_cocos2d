@@ -10,6 +10,10 @@
 
 @implementation Box2DBasicSprite
 
+@synthesize body = _body;
+
+
+
 - (id)initWithPosition:(CGPoint)position
 {
     assert(0);//在子类中重写

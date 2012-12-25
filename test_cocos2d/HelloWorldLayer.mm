@@ -60,7 +60,7 @@ enum {
 		[self initPhysics];
 		
 		// create reset button
-		[self createMenu];
+//		[self createMenu];
 		
 		//Set up sprite
 		
@@ -175,34 +175,47 @@ enum {
 	m_debugDraw->SetFlags(flags);		
 	
 	
-	// Define the ground body.
-	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0, 0); // bottom-left corner
-	
-	// Call the body factory which allocates memory for the ground body
-	// from a pool and creates the ground box shape (also from a pool).
-	// The body is also added to the world.
-	b2Body* groundBody = world->CreateBody(&groundBodyDef);
-	
-	// Define the ground box shape.
-	b2EdgeShape groundBox;		
-	
-	// bottom
-	
-	groundBox.Set(b2Vec2(0,0), b2Vec2(s.width/PTM_RATIO,0));
-	groundBody->CreateFixture(&groundBox,0);
-	
-	// top
-	groundBox.Set(b2Vec2(0,s.height/PTM_RATIO), b2Vec2(s.width/PTM_RATIO,s.height/PTM_RATIO));
-	groundBody->CreateFixture(&groundBox,0);
-	
-	// left
-	groundBox.Set(b2Vec2(0,s.height/PTM_RATIO), b2Vec2(0,0));
-	groundBody->CreateFixture(&groundBox,0);
-	
-	// right
-	groundBox.Set(b2Vec2(s.width/PTM_RATIO,s.height/PTM_RATIO), b2Vec2(s.width/PTM_RATIO,0));
-	groundBody->CreateFixture(&groundBox,0);
+//	// Define the ground body.
+//	b2BodyDef groundBodyDef;
+//	groundBodyDef.position.Set(0, 0); // bottom-left corner
+//	
+//	// Call the body factory which allocates memory for the ground body
+//	// from a pool and creates the ground box shape (also from a pool).
+//	// The body is also added to the world.
+//	b2Body* groundBody = world->CreateBody(&groundBodyDef);
+//	
+//	// Define the ground box shape.
+//	b2EdgeShape groundBox;		
+//	
+//	// bottom
+//	
+//	groundBox.Set(b2Vec2(0,0), b2Vec2(s.width/PTM_RATIO,0));
+//	groundBody->CreateFixture(&groundBox,0);
+//	
+//	// top
+//	groundBox.Set(b2Vec2(0,s.height/PTM_RATIO), b2Vec2(s.width/PTM_RATIO,s.height/PTM_RATIO));
+//	groundBody->CreateFixture(&groundBox,0);
+//	
+//	// left
+//	groundBox.Set(b2Vec2(0,s.height/PTM_RATIO), b2Vec2(0,0));
+//	groundBody->CreateFixture(&groundBox,0);
+//	
+//	// right
+//	groundBox.Set(b2Vec2(s.width/PTM_RATIO,s.height/PTM_RATIO), b2Vec2(s.width/PTM_RATIO,0));
+//	groundBody->CreateFixture(&groundBox,0);
+    
+    CGSize screenSize = [CCDirector sharedDirector].winSize;
+    
+    // +++ Add anchor body
+    b2BodyDef anchorBodyDef;
+    anchorBodyDef.position.Set(screenSize.width/PTM_RATIO/2,screenSize.height/PTM_RATIO*0.7f); //center body on screen
+    anchorBody = world->CreateBody(&anchorBodyDef);
+    // +++ Add rope spritesheet to layer
+    ropeSpriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"rope.png" ];
+    [self addChild:ropeSpriteSheet];
+    // +++ Init array that will hold references to all our ropes
+    vRopes = [[NSMutableArray alloc] init];
+    
 }
 
 -(void) draw
@@ -221,6 +234,13 @@ enum {
 	world->DrawDebugData();	
 	
 	kmGLPopMatrix();
+    
+    // +++ Update rope sprites
+    for(uint i=0;i<[vRopes count];i++) {
+        [[vRopes objectAtIndex:i] updateSprites];
+    }
+    
+    
 }
 
 -(void) addNewSpriteAtPosition:(CGPoint)p
@@ -256,6 +276,19 @@ enum {
 	body->CreateFixture(&fixtureDef);
 	
 	[sprite setPhysicsBody:body];
+    
+    // +++ Create box2d joint
+    b2RopeJointDef jd;
+    jd.bodyA=anchorBody; //define bodies
+    jd.bodyB=body;
+    jd.localAnchorA = b2Vec2(0,0); //define anchors
+    jd.localAnchorB = b2Vec2(0,0);
+    jd.maxLength= (body->GetPosition() - anchorBody->GetPosition()).Length(); //define max length of joint = current distance between bodies
+    world->CreateJoint(&jd); //create joint
+    // +++ Create VRope
+    VRope *newRope = [[VRope alloc] init:anchorBody body2:body spriteSheet:ropeSpriteSheet];
+    [vRopes addObject:newRope];
+    
 }
 
 -(void) update: (ccTime) dt
@@ -270,7 +303,13 @@ enum {
 	
 	// Instruct the world to perform a single step of simulation. It is
 	// generally best to keep the time step and iterations fixed.
-	world->Step(dt, velocityIterations, positionIterations);	
+	world->Step(dt, velocityIterations, positionIterations);
+    
+    // +++ Update rope physics
+    for(uint i=0;i<[vRopes count];i++) {
+        [[vRopes objectAtIndex:i] update:dt];
+    }
+    
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event

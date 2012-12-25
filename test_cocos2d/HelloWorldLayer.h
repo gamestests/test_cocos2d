@@ -20,12 +20,19 @@
 //to define the ratio so that your most common object type is 1x1 metre.
 #define PTM_RATIO 32
 
+#import "VRope.h"
+
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 {
 	CCTexture2D *spriteTexture_;	// weak ref
 	b2World* world;					// strong ref
 	GLESDebugDraw *m_debugDraw;		// strong ref
+    
+    b2Body* anchorBody; //reference to anchor body
+    CCSpriteBatchNode* ropeSpriteSheet; //sprite sheet for rope segment
+    NSMutableArray* vRopes; //array to hold rope references
+    
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
